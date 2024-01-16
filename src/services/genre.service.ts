@@ -1,4 +1,11 @@
+import { where } from 'sequelize';
 import { Genre } from '../models';
+
+export const update = async (id: number, name: string) => {
+  const count = await Genre.update({ name }, { where: { id } });
+
+  return count ? await Genre.findByPk(id) : null;
+};
 
 export const create = async (name: string) => {
   const genre = await Genre.create({
