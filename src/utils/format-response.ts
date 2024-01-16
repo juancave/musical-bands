@@ -6,4 +6,11 @@ export const success = (res: Response, data: any) => {
     success: true,
     data
   })
-}
+};
+
+export const error = (res: Response, message: string, statusCode: StatusCodes) => {
+  return res.status(statusCode).send({
+    success: false,
+    data: message,
+  })
+};

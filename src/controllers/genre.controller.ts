@@ -1,10 +1,15 @@
 import { RequestHandler, Request, Response } from 'express';
 
 import * as genreService from '../services/genre.service';
-import { success } from '../utils/format-response';
+import { success, error } from '../utils/format-response';
+import { StatusCodes } from 'http-status-codes';
 
 export const create = async (req: Request, res: Response, next: RequestHandler) => {
   try {
+    if (!req.body.name) {
+      return error(res, "The field name is required", StatusCodes.BAD_REQUEST);
+    }
+
     const data = await genreService.create(req.body);
 
     return success(res, data);

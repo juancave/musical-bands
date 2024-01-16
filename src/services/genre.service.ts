@@ -1,10 +1,6 @@
 import { Genre } from '../models';
 
-export const create = async ({ name }: any) => {
-  if (!name) {
-    return "Not a valid name";
-  }
-
+export const create = async (name: string) => {
   const genre = await Genre.create({
     name,
   });
