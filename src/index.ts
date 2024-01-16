@@ -9,6 +9,9 @@ const app: Express = express();
 const prefix = process.env.PREFIX || '/api';
 const port = process.env.PORT;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(prefix, api);
 
 app.listen(port, () => {

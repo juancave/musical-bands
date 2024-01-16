@@ -1,16 +1,21 @@
-// mock data
-const genre = {
-  id: 1,
-  name: 'Genre 1',
-  createdAt: new Date(),
+import { Genre } from '../models';
+
+export const create = async ({ name }: any) => {
+  if (!name) {
+    return "Not a valid name";
+  }
+
+  const genre = await Genre.create({
+    name,
+  });
+
+  return genre;
 };
 
 export const all = async () => {
-  return [
-    genre
-  ];
-}
+  return await Genre.findAll();
+};
 
 export const byId = async (id: number) => {
-  return genre;
-}
+  return await Genre.findByPk(id);
+};

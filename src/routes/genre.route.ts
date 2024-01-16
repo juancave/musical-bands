@@ -5,5 +5,6 @@ const router = Router();
 
 router.get('/', genreController.all);
 router.get('/:id([0-9]+)', genreController.byId);
+router.post('/', genreController.create);
 
 export default router;
