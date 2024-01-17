@@ -1,4 +1,3 @@
-import { where } from 'sequelize';
 import { Genre } from '../models';
 
 export const update = async (id: number, name: string) => {
